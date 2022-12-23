@@ -1,25 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import './App.scss';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { SharedLayout } from './pages/SharedLayout/SharedLayout';
+import MainPage from './components/MainPage/MainPage';
+import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from './hooks';
+import { getProductsList } from './features/productsSlice';
+
 
 function App() {
+
+  const dispatch = useAppDispatch();
+
+  const productList = useAppSelector((state)=>state.products.productsList);
+
+  console.log(productList);
+
+  useEffect(() => {
+    dispatch(getProductsList(0));
+  }, [])
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<SharedLayout />}>
+          <Route index element={<MainPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+
   );
 }
 

@@ -1,0 +1,11 @@
+$color: green;
+
+.main{
+
+    #{&}__div{
+        background: $color;
+        width: 200px;
+        height: 200px;
+    }    
+
+}
