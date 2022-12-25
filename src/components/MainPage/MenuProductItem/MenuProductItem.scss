@@ -1,0 +1,29 @@
+.article {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1.5%;
+    background-color: aliceblue;
+    border: 2px solid purple;
+    padding: 1.5%;
+    height: 177px;
+
+    .img {
+
+        img {
+            width: 100px;
+        }
+
+    }
+
+    .info {
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: flex-start;        
+
+    }
+
+}
