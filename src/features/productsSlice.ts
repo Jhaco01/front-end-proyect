@@ -5,8 +5,8 @@ import { AppDispatch, RootState } from "../store";
 const url = 'https://fakestoreapi.com/products';
 
 interface productsState {
-    productsList: Product[],
-    isLoading: boolean
+    productsList: Product[];
+    isLoading: boolean;
 }
 
 const initialState : productsState = {
@@ -36,7 +36,7 @@ export const getProductsList = createAsyncThunk<
     state: RootState
     rejectValue: string
   }
->('users/getProductsList', async (foo, thunkApi) => {
+>('products/getProductsList', async (foo, thunkApi) => {
   
     try {
 
@@ -46,7 +46,7 @@ export const getProductsList = createAsyncThunk<
 
     } catch (error) {
 
-        return thunkApi.rejectWithValue('Ha ocurrido un error.')
+        return thunkApi.rejectWithValue('Ha ocurrido un error.');
 
     }
 

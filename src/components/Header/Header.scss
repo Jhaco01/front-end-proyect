@@ -1,0 +1,58 @@
+$main-color: purple;
+
+.header {
+    
+    height: 16vh;
+    background-color: $main-color;
+
+    .main-row {
+
+        height: 100%;
+
+        .logo {
+            
+            display: flex;
+            height: 100%;
+
+
+            & img {
+
+                height: 90%;
+                width: auto;
+                justify-self: center;
+                margin: auto;
+
+            }
+
+        }
+
+        .col-7 {
+
+            height: 100%;
+
+            .row {
+
+                height: 50%;
+
+                .search-input {
+
+                    margin-top: 3%;
+                    margin-left: 5%;
+                    width: 80%;
+                    height: 45%;
+
+                }
+            
+            }
+
+        }
+
+        .col-3 {
+
+            height: 100%;
+
+        }
+    
+    }
+
+}

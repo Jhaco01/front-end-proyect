@@ -1,4 +1,4 @@
-import { Product } from "../../../models/Product"
+import { Product } from '../../models/Product'
 import './MenuProductItem.scss'
 
 export const MenuProductItem : React.FC<Product> = ({id, title, price, description, category, image, rating}) => {
@@ -6,7 +6,7 @@ export const MenuProductItem : React.FC<Product> = ({id, title, price, descripti
     <article>
         <div className="article">
             <div className="img">
-                <img src={image} />
+                <img src={image} alt="product" />
             </div>
             <div className="info">
                 <h4 className="title"> {title} </h4>

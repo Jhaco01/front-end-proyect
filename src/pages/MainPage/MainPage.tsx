@@ -1,6 +1,6 @@
-import { useEffect, useReducer, useState } from "react";
+import { useEffect, useReducer } from "react";
 import { useAppSelector } from "../../hooks";
-import { MenuProductItem } from "./MenuProductItem/MenuProductItem";
+import { MenuProductItem } from "../../components/MenuProductItem/MenuProductItem";
 import './MainPage.scss'
 
 interface IState {

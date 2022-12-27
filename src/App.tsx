@@ -2,10 +2,11 @@ import './App.css';
 import './App.scss';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { SharedLayout } from './pages/SharedLayout/SharedLayout';
-import { MainPage } from './components/MainPage/MainPage';
+import { MainPage } from './pages/MainPage/MainPage';
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from './hooks';
 import { getProductsList } from './features/productsSlice';
+import { getCategoriesList } from './features/categoriesSlice';
 
 
 
@@ -16,7 +17,8 @@ function App() {
   const productList = useAppSelector((state)=>state.products.productsList);  
 
   useEffect(() => {
-    dispatch(getProductsList(0));
+    dispatch(getProductsList(''));
+    dispatch(getCategoriesList(''));
   }, [])
 
   console.log(productList);
