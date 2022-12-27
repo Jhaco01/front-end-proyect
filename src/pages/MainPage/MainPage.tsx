@@ -62,18 +62,11 @@ export const MainPage = () => {
   
     const [state, dispatch] = useReducer(reducer, initialState);
 
-    console.log(state);
-
     const productList = useAppSelector( state => state.products.productsList );
-
-    console.log(productList.length);
-    console.log(state.end + 1);
 
     useEffect(()=>{
       
       const totalPages = Math.round(productList.length / (state.end + 1));
-
-      console.log(totalPages);
       
       dispatch({type: EActionType.SET_TOTAL, payload: totalPages})
 
@@ -100,24 +93,34 @@ export const MainPage = () => {
             </div>
         </section>
         <div className="buttons">
-        <button onClick={()=>{
-          dispatch({ type: EActionType.PREV, payload: 0 });
-        }}>
+
+        {
+
+        state.currentPage > 1
+            &&          
+        <button className="btn" onClick={()=>{
+            dispatch({ type: EActionType.PREV, payload: 0 });
+          }}>
           {'<'}
         </button>
-        <div className="buttons__pages">
-          <span className="buttons__pages__current-page">
-            {state.currentPage}
-          </span>
-          <span className="buttons__pages__total-pages">
-            {state.totalPages}
-          </span>
+        
+        }
+        <div>
+          <span className="btn btn-outline-secondary">
+            {state.currentPage} of {state.totalPages}
+          </span>          
         </div>
-        <button onClick={()=>{
-          dispatch({ type: EActionType.NEXT, payload: 0 });
-        }}>
+
+        {
+
+        state.currentPage < state.totalPages 
+          &&  
+        <button className="btn" onClick={()=>{
+            dispatch({ type: EActionType.NEXT, payload: 0 });
+          }}>
           {'>'}
         </button>
+        }
       </div>
     </main>
   )

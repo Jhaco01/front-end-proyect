@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from './hooks';
 import { getProductsList } from './features/productsSlice';
 import { getCategoriesList } from './features/categoriesSlice';
+import { CategoryPage } from './pages/CategoryPage/CategoryPage';
 
 
 
@@ -21,15 +22,13 @@ function App() {
     dispatch(getCategoriesList(''));
   }, [])
 
-  console.log(productList);
-  
-
   return (
     
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<SharedLayout />}>
           <Route index element={<MainPage />} />
+          <Route path='/:category' element={<CategoryPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
