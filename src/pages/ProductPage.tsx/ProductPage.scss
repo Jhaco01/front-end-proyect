@@ -1,0 +1,31 @@
+main {
+    
+    display: flex;
+    flex-direction: column;
+
+    .section {
+
+        width: 55%;
+        margin: auto;
+
+    }
+
+    .buttons {
+
+        justify-self: flex-end;        
+        display: flex;
+        align-self: center;
+
+        button {
+
+            background: none;
+            border: none;
+            font-size: 40px;
+            margin-top: -20px;
+            color: purple;
+
+        }
+
+
+    }
+}

@@ -1,29 +1,32 @@
-.article {
+article.card {
+    border-color: purple;
+    height: 19vh;
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 1.5%;
-    background-color: aliceblue;
-    border: 2px solid purple;
-    padding: 1.5%;
-    height: 177px;
+    .row {
 
-    .img {
+        height: 100%;
 
-        img {
-            width: 100px;
+        .img {
+            
+            height: 100%;
+
+            img {
+                height: 100%;
+                width: 60%;
+            }
+            
+        }
+
+        .btn {
+            background-color: purple;
+
+            &:hover {
+                background-color: rgb(97, 2, 97);
+            }
+
         }
 
     }
 
-    .info {
-
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: flex-start;        
-
-    }
-
 }
+

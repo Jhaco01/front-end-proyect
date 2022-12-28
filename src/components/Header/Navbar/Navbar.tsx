@@ -4,6 +4,7 @@ import './Navbar.scss'
 
 interface Props {
     list: string[];
+    home: boolean;
 }
 
 const navList = (linkArray:string[]) => {
@@ -18,13 +19,24 @@ const navList = (linkArray:string[]) => {
 }
 
 
-export const Navbar : React.FC<Props> = ({list}) => {
+export const Navbar : React.FC<Props> = ({list,home}) => {
   return (
     <nav className="navbar">
 
         <div className="container-fluid">
 
             <ul className="navbar-nav mb-2">
+
+                {
+                    home 
+                        &&
+                    <li className="nav-item" >
+                        <NavLink 
+                            to={`/`} 
+                            className={({isActive})=>(isActive? 'nav-link active':'nav-link' )}
+                        > HOME </NavLink>
+                    </li>
+                }
 
                 {
                     navList(list)

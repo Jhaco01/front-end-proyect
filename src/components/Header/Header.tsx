@@ -30,7 +30,7 @@ export const Header = () => {
 
             <div className="row">
 
-              <Navbar list={categoriesList} />
+              <Navbar list={categoriesList} home={true} />
 
             </div>
 
@@ -38,7 +38,7 @@ export const Header = () => {
 
           <div className="col-3">
 
-            <Navbar list={navList}/>
+            <Navbar list={navList} home={false} />
           
           </div>
 

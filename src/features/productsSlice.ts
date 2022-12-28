@@ -1,5 +1,5 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Product } from "../models/Product";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { Product } from "../models/models";
 import { AppDispatch, RootState } from "../store";
 
 const url = 'https://fakestoreapi.com/products';
