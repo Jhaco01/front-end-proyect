@@ -4,12 +4,12 @@ import { AppDispatch, RootState } from "../store";
 
 const url = 'https://fakestoreapi.com/products';
 
-interface productsState {
+interface IProductsState {
     productsList: Product[];
     isLoading: boolean;
 }
 
-const initialState : productsState = {
+const initialState : IProductsState = {
     productsList: [],
     isLoading: false
 }

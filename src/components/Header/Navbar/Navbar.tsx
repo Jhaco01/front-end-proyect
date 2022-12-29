@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
+import { SharedLayoutContext } from '../../../pages/SharedLayout/SharedLayout';
 import './Navbar.scss'
 
 interface Props {
     list: string[];
     home: boolean;
+    offCanvas: boolean;
 }
 
 const navList = (linkArray:string[]) => {
@@ -19,7 +21,10 @@ const navList = (linkArray:string[]) => {
 }
 
 
-export const Navbar : React.FC<Props> = ({list,home}) => {
+export const Navbar : React.FC<Props> = ({list,home, offCanvas}) => {
+
+  const {handleShow} = useContext(SharedLayoutContext);
+
   return (
     <nav className="navbar">
 
@@ -40,6 +45,14 @@ export const Navbar : React.FC<Props> = ({list,home}) => {
 
                 {
                     navList(list)
+                }
+
+                {
+                    offCanvas 
+                        &&                   
+                    <li className="nav-item" >
+                        <span className="nav-link" onClick={handleShow} >CART</span>                        
+                    </li>
                 }
 
             </ul>

@@ -4,18 +4,18 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { SharedLayout } from './pages/SharedLayout/SharedLayout';
 import { MainPage } from './pages/MainPage/MainPage';
 import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from './hooks';
+import { useAppDispatch } from './hooks';
 import { getProductsList } from './features/productsSlice';
 import { getCategoriesList } from './features/categoriesSlice';
 import { CategoryPage } from './pages/CategoryPage/CategoryPage';
+import { LogIn } from './pages/LogIn/LogIn';
+import { SignIn } from './pages/SignIn/SignIn';
 
 
 
 function App() {
 
-  const dispatch = useAppDispatch();
-
-  const productList = useAppSelector((state)=>state.products.productsList);  
+  const dispatch = useAppDispatch();  
 
   useEffect(() => {
     dispatch(getProductsList(''));
@@ -30,6 +30,8 @@ function App() {
           <Route index element={<MainPage />} />
           <Route path='/:category' element={<CategoryPage />} />
         </Route>
+        <Route path='/log%20in' element={<LogIn />} />
+        <Route path='/sign%20in' element={<SignIn />} />
       </Routes>
     </BrowserRouter>
 

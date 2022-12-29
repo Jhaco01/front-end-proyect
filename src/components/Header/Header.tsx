@@ -5,7 +5,7 @@ import { useAppSelector } from '../../hooks'
 export const Header = () => {
 
   const categoriesList = useAppSelector( state => state.categories.categoryList )
-  const navList = ['Log in', 'Sign in', 'cart']
+  const navList = ['log in', 'sign in']
 
   return (
     <header>
@@ -30,7 +30,7 @@ export const Header = () => {
 
             <div className="row">
 
-              <Navbar list={categoriesList} home={true} />
+              <Navbar list={categoriesList} home={true} offCanvas={false} />
 
             </div>
 
@@ -38,7 +38,7 @@ export const Header = () => {
 
           <div className="col-3">
 
-            <Navbar list={navList} home={false} />
+            <Navbar list={navList} home={false} offCanvas={true} />
           
           </div>
 

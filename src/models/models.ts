@@ -31,3 +31,12 @@ export interface IAction {
   type: EActionType;
   payload: number;
 }
+
+export interface IUser {
+  id?:string;
+  name:string;
+  email?: string;
+  cart?: Product[];
+  userName?: string;
+  password?:string;
+}
