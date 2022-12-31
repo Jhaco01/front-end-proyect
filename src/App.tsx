@@ -8,8 +8,8 @@ import { useAppDispatch } from './hooks';
 import { getProductsList } from './features/productsSlice';
 import { getCategoriesList } from './features/categoriesSlice';
 import { CategoryPage } from './pages/CategoryPage/CategoryPage';
-import { LogIn } from './pages/LogIn/LogIn';
 import { SignIn } from './pages/SignIn/SignIn';
+import { LogIn } from './pages/LogIn/LogIn';
 
 
 

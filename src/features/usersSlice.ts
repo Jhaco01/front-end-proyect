@@ -5,7 +5,7 @@ interface IUsersState {
     isLoggedIn: boolean;
     usersList: IUser[];
     currentUser: {} | IUser;
-    error: boolean;
+    err: boolean;
 }
 
 const genericUser : IUser = {
@@ -21,7 +21,7 @@ const initialState : IUsersState = {
     isLoggedIn: false,
     usersList: [genericUser],
     currentUser: {},
-    error: false
+    err: false
 }
 
 const usersSlice = createSlice({
@@ -34,18 +34,17 @@ const usersSlice = createSlice({
             
             const user = state.usersList.find( user => user.id?.includes( payload.name ) && user.password === payload.password );
 
-            user ? 
-                state = {
-                    ...state,
-                    isLoggedIn: true,
-                    currentUser: user,
-                    error: false                    
-                }
-                :
-                state = {
-                    ...state,
-                    error: true
-                }
+            return user? 
+                {
+                    ...state, 
+                    isLoggedIn: true, 
+                    currentUser: user, 
+                    err: false
+                } : {
+                    ...state, 
+                    err: true
+                };            
+                
         },
         signIn: (state,action: PayloadAction<IUser>) => {
             
@@ -53,22 +52,24 @@ const usersSlice = createSlice({
 
             const existingUser = state.usersList.find( user => user.userName === payload.userName  || user.email === payload.email );
 
-            existingUser ? 
-                state = {
+            if (existingUser) 
+                return {
                     ...state,
                     error: true
                 }
-                :
-                state = {
+                else {
+                return {
                     ...state,
                     isLoggedIn: true,
                     usersList: [...state.usersList, payload],
                     currentUser: payload,
-                    error: false
-                }
+                    err: false
+                }}
 
         }        
     }
 });
+
+export const {logIn, signIn} = usersSlice.actions;
 
 export default usersSlice;
