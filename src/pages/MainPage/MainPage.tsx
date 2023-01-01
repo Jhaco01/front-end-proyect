@@ -1,6 +1,6 @@
 import { useAppSelector } from "../../hooks";
 import './MainPage.scss'
-import { ProductPage } from "../ProductPage.tsx/ProductPage";
+import { ProductPage } from "../ProductPage/ProductPage";
 
 export const MainPage = () => {
   

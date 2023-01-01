@@ -23,7 +23,7 @@ const navList = (linkArray:string[]) => {
 
 export const Navbar : React.FC<Props> = ({list,home, offCanvas}) => {
 
-  const {handleShow} = useContext(SharedLayoutContext);
+  const {handleShowOffCanvas} = useContext(SharedLayoutContext);
 
   return (
     <nav className="navbar">
@@ -51,7 +51,7 @@ export const Navbar : React.FC<Props> = ({list,home, offCanvas}) => {
                     offCanvas 
                         &&                   
                     <li className="nav-item" >
-                        <span className="nav-link" onClick={handleShow} >CART</span>                        
+                        <span className="nav-link" onClick={handleShowOffCanvas} >CART</span>                        
                     </li>
                 }
 

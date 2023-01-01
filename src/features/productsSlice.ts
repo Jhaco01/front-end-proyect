@@ -42,7 +42,10 @@ export const getProductsList = createAsyncThunk<
 
         const resp = await fetch(url)
         const data = await resp.json() as Product[];
-        return data;
+        return data.map(product => ({
+          ...product, 
+          quantity : 0
+        }));
 
     } catch (error) {
 

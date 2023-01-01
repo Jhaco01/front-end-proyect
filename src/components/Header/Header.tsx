@@ -4,8 +4,10 @@ import { useAppSelector } from '../../hooks'
 
 export const Header = () => {
 
+  const { isLoggedIn } = useAppSelector(state => state.users);
+
   const categoriesList = useAppSelector( state => state.categories.categoryList )
-  const navList = ['log in', 'sign in']
+  const navList = isLoggedIn ? ['log out','my profile'] : ['log in', 'sign up'];
 
   return (
     <header>

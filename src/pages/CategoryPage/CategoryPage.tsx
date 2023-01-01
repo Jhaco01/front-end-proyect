@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useAppSelector } from '../../hooks';
-import { ProductPage } from '../ProductPage.tsx/ProductPage';
+import { ProductPage } from '../ProductPage/ProductPage';
 
 export const CategoryPage = () => {
 

@@ -11,6 +11,7 @@ export interface Product {
     category: string;
     image: string;
     rating: Rating;
+    quantity: number; 
 }
 
 export interface IState {
@@ -36,7 +37,7 @@ export interface IUser {
   id?:string;
   name:string;
   email?: string;
-  cart?: Product[];
+  cart: Product[];
   userName?: string;
   password?:string;
 }

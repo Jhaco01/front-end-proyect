@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IUser } from "../models/models";
+import { IUser, Product } from "../models/models";
 
 interface IUsersState {
     isLoggedIn: boolean;
     usersList: IUser[];
-    currentUser: {} | IUser;
+    currentUser: IUser;
     err: boolean;
 }
 
@@ -20,7 +20,10 @@ const genericUser : IUser = {
 const initialState : IUsersState = {
     isLoggedIn: false,
     usersList: [genericUser],
-    currentUser: {},
+    currentUser: {
+        name: '',
+        cart: []        
+    },
     err: false
 }
 
@@ -32,7 +35,7 @@ const usersSlice = createSlice({
             
             const {payload} = action;
             
-            const user = state.usersList.find( user => user.id?.includes( payload.name ) && user.password === payload.password );
+            const user = state.usersList.find( user => (user.userName === payload.name || user.email === payload.name) && user.password === payload.password );
 
             return user? 
                 {
@@ -46,30 +49,66 @@ const usersSlice = createSlice({
                 };            
                 
         },
-        signIn: (state,action: PayloadAction<IUser>) => {
+        signUp: (state,action: PayloadAction<IUser>) => {
             
             const {payload} = action;
 
             const existingUser = state.usersList.find( user => user.userName === payload.userName  || user.email === payload.email );
 
-            if (existingUser) 
-                return {
+            return existingUser ? 
+                {
                     ...state,
                     error: true
                 }
-                else {
-                return {
+            : 
+                {
                     ...state,
                     isLoggedIn: true,
                     usersList: [...state.usersList, payload],
                     currentUser: payload,
                     err: false
-                }}
+                }
 
-        }        
+        },
+        addToCart : (state, action: PayloadAction<Product>) => {
+
+            if (!state.isLoggedIn) return;
+
+            let newItem = action.payload;
+            const existingItem = state.currentUser.cart.find(cartItem => cartItem.id === newItem.id);                                        
+
+            if (existingItem) {
+                existingItem.quantity = existingItem.quantity + 1;
+            } else {
+                newItem = {
+                    ...newItem,
+                    quantity: 1
+                }
+                state.currentUser.cart.push(newItem);
+            }
+
+        },
+        removeFromCart : (state, action : PayloadAction<number>) => {
+
+            const item = state.currentUser.cart.find(product => product.id === action.payload);
+
+            if (!item) return;
+
+            item.quantity === 1 ?
+                state.currentUser.cart = state.currentUser.cart.filter( cartItem => cartItem.id !== action.payload )    
+            : 
+                item.quantity--;
+
+        },
+        calculateProductTotal : () => {
+
+        },
+        calculateTotals : () => {
+
+        }
     }
 });
 
-export const {logIn, signIn} = usersSlice.actions;
+export const {logIn, signUp, addToCart, removeFromCart} = usersSlice.actions;
 
 export default usersSlice;

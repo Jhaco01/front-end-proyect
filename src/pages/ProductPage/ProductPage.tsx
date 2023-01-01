@@ -23,7 +23,8 @@ export const ProductPage : React.FC<Props> = ({productList}) => {
     )    
   
   return (
-    <main>
+    <main>        
+
         <section>
             <div className="section">
                 {

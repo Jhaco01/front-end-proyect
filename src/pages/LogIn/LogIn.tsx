@@ -12,7 +12,8 @@ const spinnerRef = useRef<HTMLDivElement>(null);
 
 const [userInfo, setUserInfo] = useState<IUser>({
     name: '',
-    password: ''
+    password: '',
+    cart: []
 });
 
 const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
