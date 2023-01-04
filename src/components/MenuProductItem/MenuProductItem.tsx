@@ -17,7 +17,7 @@ export const MenuProductItem : React.FC<Product> = (Props) => {
     const handleAddClick = () => {
 
         if (isLoggedIn) {
-            dispatch(addToCart(Props));
+            dispatch(addToCart(Props));            
         } else {
             handleShowModal();
         }

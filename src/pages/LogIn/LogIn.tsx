@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { logIn } from '../../features/usersSlice';
 import { useAppDispatch, useAppSelector } from '../../hooks';
@@ -66,6 +67,12 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     dispatch(logIn(userInfo));
 
 }
+
+const handleSignUpClick = () => {
+
+    navigate('/sign%20up');
+
+}
   
 return (
     <>
@@ -104,11 +111,14 @@ return (
                         value={userInfo.password}
                         onChange={(e)=>{handleChange(e)}}
                     />
-                </div>
+                </div>                
 
-                <button className="btn btn-lg ms-5"> Log In </button>
+                    <Link to={'/'} className="btn btn-lg ms-5"> Go back </Link>
+                    <button type='submit' className="btn btn-lg ms-5"> Log In </button>                
 
             </form>
+
+            <p className='m-5 signup-text' >Don't have an account? <span onClick={handleSignUpClick} >Sign Up</span></p>
 
             <div ref={spinnerRef} className="spinners d-none">
 

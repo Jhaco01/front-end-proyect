@@ -49,6 +49,18 @@ const usersSlice = createSlice({
                 };            
                 
         },
+        logOut: (state) => {
+
+            return {
+                ...state,
+                isLoggedIn: false,
+                currentUser: {
+                    name: '',
+                    cart: []
+                }
+            }
+
+        },
         signUp: (state,action: PayloadAction<IUser>) => {
             
             const {payload} = action;
@@ -70,6 +82,19 @@ const usersSlice = createSlice({
                 }
 
         },
+        updateUserCart :(state, action: PayloadAction<IUser>) => {
+            
+            if (!state.isLoggedIn) return;
+            
+            const cart = action.payload.cart;  
+            
+            const userInList = state.usersList.find(user => user.id === action.payload.id);
+
+            const indexOfUser = userInList ? state.usersList.indexOf(userInList) : -1;
+
+            state.usersList[indexOfUser] = action.payload;            
+
+        },
         addToCart : (state, action: PayloadAction<Product>) => {
 
             if (!state.isLoggedIn) return;
@@ -78,14 +103,15 @@ const usersSlice = createSlice({
             const existingItem = state.currentUser.cart.find(cartItem => cartItem.id === newItem.id);                                        
 
             if (existingItem) {
-                existingItem.quantity = existingItem.quantity + 1;
+                existingItem.quantity = existingItem.quantity + 1;                
+
             } else {
                 newItem = {
                     ...newItem,
                     quantity: 1
                 }
                 state.currentUser.cart.push(newItem);
-            }
+            }                  
 
         },
         removeFromCart : (state, action : PayloadAction<number>) => {
@@ -109,6 +135,6 @@ const usersSlice = createSlice({
     }
 });
 
-export const {logIn, signUp, addToCart, removeFromCart} = usersSlice.actions;
+export const {logIn, signUp, addToCart, removeFromCart, updateUserCart, logOut} = usersSlice.actions;
 
 export default usersSlice;
