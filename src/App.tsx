@@ -12,6 +12,8 @@ import { SignUp } from './pages/SignUp/SignUp';
 import { LogIn } from './pages/LogIn/LogIn';
 import { updateUserCart } from './features/usersSlice';
 import { LogOut } from './pages/Logout/LogOut';
+import { SingleProductPage } from './pages/SingleProductPage/SingleProductPage';
+import { Product } from './models/models';
 
 
 function App() {
@@ -35,6 +37,7 @@ function App() {
         <Route path='/' element={<SharedLayout />}>
           <Route index element={<MainPage />} />
           <Route path='/:category' element={<CategoryPage />} />
+          <Route path='/products/:productId' element={<SingleProductPage />} />
         </Route>
         <Route path='/log%20in' element={<LogIn />} />
         <Route path='/sign%20up' element={<SignUp />} />

@@ -65,16 +65,18 @@ const usersSlice = createSlice({
             
             const {payload} = action;
 
+            payload.id = `${payload.email}${payload.userName}`;
+
             const existingUser = state.usersList.find( user => user.userName === payload.userName  || user.email === payload.email );
 
             return existingUser ? 
                 {
                     ...state,
-                    error: true
+                    err: true
                 }
             : 
                 {
-                    ...state,
+                    ...state,                    
                     isLoggedIn: true,
                     usersList: [...state.usersList, payload],
                     currentUser: payload,
@@ -84,9 +86,7 @@ const usersSlice = createSlice({
         },
         updateUserCart :(state, action: PayloadAction<IUser>) => {
             
-            if (!state.isLoggedIn) return;
-            
-            const cart = action.payload.cart;  
+            if (!state.isLoggedIn) return;                    
             
             const userInList = state.usersList.find(user => user.id === action.payload.id);
 

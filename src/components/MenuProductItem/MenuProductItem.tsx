@@ -8,7 +8,7 @@ import './MenuProductItem.scss'
 
 export const MenuProductItem : React.FC<Product> = (Props) => {
 
-    const {title, price, image} = Props;
+    const {title, price, image, id} = Props;
     
     const { isLoggedIn } = useAppSelector(state => state.users)
     const dispatch = useAppDispatch();
@@ -23,7 +23,7 @@ export const MenuProductItem : React.FC<Product> = (Props) => {
         }
 
     }
-    
+
     return (       
       <article className='card m-2'>
           <div className="row article">
@@ -34,7 +34,7 @@ export const MenuProductItem : React.FC<Product> = (Props) => {
                   <div className="card-body">
                       <h5 className="card-title"> {title} </h5>
                       <p className="card-text text-end h5">{price}$</p>
-                      <Link to={'/'} className='btn btn-lg ms-3' > Details </Link>
+                      <Link to={`/products/${id}`} className='btn btn-lg ms-3' > Details </Link>                      
                       <button className='btn btn-lg ms-3' onClick={handleAddClick}> Add to cart </button>
                   </div>
               </div>

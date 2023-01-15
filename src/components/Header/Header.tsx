@@ -26,7 +26,7 @@ export const Header = () => {
 
             <div className="row">
 
-              <input type="text" className="form-control search-input" placeholder="search" />
+              <input type="text" className="form-control search-input" placeholder="search..." />
 
             </div>
 

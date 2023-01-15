@@ -1,6 +1,9 @@
 import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 import { SharedLayoutContext } from '../../../pages/SharedLayout/SharedLayout';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+
 import './Navbar.scss'
 
 interface Props {
@@ -51,7 +54,8 @@ export const Navbar : React.FC<Props> = ({list,home, offCanvas}) => {
                     offCanvas 
                         &&                   
                     <li className="nav-item" >
-                        <span className="nav-link" onClick={handleShowOffCanvas} >CART</span>                        
+                        {/* <span className="nav-link" onClick={handleShowOffCanvas} >CART</span>*/}
+                        <FontAwesomeIcon onClick={handleShowOffCanvas} icon={faShoppingCart} />
                     </li>
                 }
 
