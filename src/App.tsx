@@ -14,6 +14,7 @@ import { updateUserCart } from './features/usersSlice';
 import { LogOut } from './pages/Logout/LogOut';
 import { SingleProductPage } from './pages/SingleProductPage/SingleProductPage';
 import { Product } from './models/models';
+import { ResultsPage } from './pages/ResultsPage/ResultsPage';
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
       <Routes>
         <Route path='/' element={<SharedLayout />}>
           <Route index element={<MainPage />} />
+          <Route path='/results/:search' element={<ResultsPage />} />
           <Route path='/:category' element={<CategoryPage />} />
           <Route path='/products/:productId' element={<SingleProductPage />} />
         </Route>

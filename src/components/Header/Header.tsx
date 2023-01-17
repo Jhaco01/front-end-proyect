@@ -1,13 +1,31 @@
 import { Navbar } from './Navbar/Navbar'
 import './Header.scss'
 import { useAppSelector } from '../../hooks'
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const Header = () => {
+
+  const navigate = useNavigate()
 
   const { isLoggedIn } = useAppSelector(state => state.users);
 
   const categoriesList = useAppSelector( state => state.categories.categoryList )
   const navList = isLoggedIn ? ['log out','my profile'] : ['log in', 'sign up'];
+
+  const [searchValue, setSearchValue] = useState('');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setSearchValue(e.target.value);
+  }
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    searchValue ? 
+      navigate(`/results/${searchValue}`)
+    :
+      navigate('/');
+  }
 
   return (
     <header>
@@ -24,11 +42,17 @@ export const Header = () => {
 
           <div className="col-7">
 
-            <div className="row">
+            <form onSubmit={handleSubmit} className="row">
 
-              <input type="text" className="form-control search-input" placeholder="search..." />
+              <input 
+                type="text" 
+                className="form-control search-input" 
+                placeholder="search..." 
+                value={searchValue}
+                onChange={handleChange}
+              />
 
-            </div>
+            </form>
 
             <div className="row">
 

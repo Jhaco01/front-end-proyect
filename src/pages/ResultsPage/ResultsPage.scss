@@ -1,0 +1,19 @@
+$main-color: purple;
+
+.card.result-message {
+    border-color: $main-color;
+    margin-left: 30%;
+
+    .card-header {
+        border-color: $main-color;  
+    }
+
+    .card-body {
+
+        .btn {
+            background-color: $main-color;
+        }
+
+    }
+
+}

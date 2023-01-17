@@ -17,7 +17,7 @@ export const OffCanvas = () => {
         </Offcanvas.Header>
         <Offcanvas.Body>{
          cart ?
-          cart.map(cartItem => <CartItem {...cartItem} />)
+          cart.map(cartItem => <CartItem key={cartItem.id} {...cartItem} />)
             :
          <p>
            Some text as placeholder. In real life you can have the elements you
