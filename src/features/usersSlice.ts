@@ -125,12 +125,6 @@ const usersSlice = createSlice({
             : 
                 item.quantity--;
 
-        },
-        calculateProductTotal : () => {
-
-        },
-        calculateTotals : () => {
-
         }
     }
 });

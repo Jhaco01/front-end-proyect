@@ -13,8 +13,8 @@ import { LogIn } from './pages/LogIn/LogIn';
 import { updateUserCart } from './features/usersSlice';
 import { LogOut } from './pages/Logout/LogOut';
 import { SingleProductPage } from './pages/SingleProductPage/SingleProductPage';
-import { Product } from './models/models';
 import { ResultsPage } from './pages/ResultsPage/ResultsPage';
+import { ThanksPage } from './pages/ThanksPage/ThanksPage';
 
 
 function App() {
@@ -43,7 +43,8 @@ function App() {
         </Route>
         <Route path='/log%20in' element={<LogIn />} />
         <Route path='/sign%20up' element={<SignUp />} />
-        <Route path='/log%20out' element={<LogOut />} />        
+        <Route path='/log%20out' element={<LogOut />} />
+        <Route path='/thanks' element={<ThanksPage />} />        
       </Routes>
     </BrowserRouter>
 
