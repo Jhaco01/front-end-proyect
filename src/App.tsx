@@ -1,6 +1,6 @@
 import './App.css';
 import './App.scss';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import { SharedLayout } from './pages/SharedLayout/SharedLayout';
 import { MainPage } from './pages/MainPage/MainPage';
 import { useEffect } from 'react';
@@ -33,7 +33,7 @@ function App() {
 
   return (
     
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path='/' element={<SharedLayout />}>
           <Route index element={<MainPage />} />
@@ -46,7 +46,7 @@ function App() {
         <Route path='/log%20out' element={<LogOut />} />
         <Route path='/thanks' element={<ThanksPage />} />        
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
 
   );
 }
