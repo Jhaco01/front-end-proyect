@@ -43,3 +43,44 @@ $main-color: purple;
     }
 
 }
+
+@media screen and (max-width: 900px) and (min-width: 600px) {
+    
+}
+
+@media screen and (max-width: 600px) and (min-width: 420px) {
+    
+}
+
+@media screen and (max-width: 420px) {    
+ .card {
+    width: 100%;    
+
+    .product-div {        
+
+        .info-div {
+
+            .product-info {
+
+                .title {
+                    font-size: 7vw;
+                }
+                 
+                p {
+                    font-size: 5vw;
+                }
+
+                .price {
+                    font-weight: 800;
+                    color: $main-color;
+                    font-size: 6vw;
+                }
+
+            }
+
+        }
+
+    }
+
+ }   
+}

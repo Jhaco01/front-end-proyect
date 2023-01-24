@@ -20,3 +20,21 @@
         }
     }
 }
+
+@media screen and (max-width: 450px) {
+    
+    .cart-card {        
+    
+        .row {
+            
+            .img {
+                
+                .card-image {
+                    width: 25vw;                
+                }
+            }
+        }
+
+    }
+
+}

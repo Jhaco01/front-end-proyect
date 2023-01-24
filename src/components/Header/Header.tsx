@@ -1,8 +1,9 @@
 import { Navbar } from './Navbar/Navbar'
 import './Header.scss'
 import { useAppSelector } from '../../hooks'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ResponsiveDropdown } from './ResponsiveDropdown/ResponsiveDropdown';
 
 export const Header = () => {
 
@@ -27,20 +28,32 @@ export const Header = () => {
       navigate('/');
   }
 
+  const [width, setWIdth] = useState(0);
+
+  useEffect(()=>{
+    setWIdth(window.innerWidth);
+  },[])
+
+  const isMobile = width < 740;
+
   return (
-    <header>
+    <header id='header'>
       
       <div className="header container-fluid">
 
         <div className="row main-row">
 
-          <div className="col-2 logo">
+          {
+            !isMobile
+              &&
+            <div className="col-2 logo">
 
               <img src="https://www.drupal.org/files/project-images/bootstrap5.jpeg" alt="logo" />
 
-          </div>
+          </div>              
+          }          
 
-          <div className="col-7">
+          <div className={`col-${isMobile ? '11 m-4' : '7'}`}>
 
             <form onSubmit={handleSubmit} className="row">
 
@@ -54,15 +67,19 @@ export const Header = () => {
 
             </form>
 
-            <div className="row">
+            <div className="row"> {
 
-              <Navbar list={categoriesList} home={true} offCanvas={false} />
+              !isMobile ?
 
-            </div>
+                <Navbar list={categoriesList} home={true} offCanvas={false} />
+              :
+                <ResponsiveDropdown list={categoriesList} />
+
+            }</div>
 
           </div>
 
-          <div className="col-3">
+          <div className={`${ isMobile ? 'col-12' : 'col-3' }`}>
 
             <Navbar list={navList} home={false} offCanvas={true} />
           

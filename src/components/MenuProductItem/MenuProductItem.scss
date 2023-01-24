@@ -1,6 +1,7 @@
 article.card {
     border-color: purple;
     height: 19vh;
+    min-height: 160px;
 
     .row {
 
@@ -30,3 +31,102 @@ article.card {
 
 }
 
+@media screen and (max-width: 910px) and (min-width: 601px) {
+    article.card{
+               
+
+        .article {
+
+            .img {                        
+    
+                img {             
+                    width: 85%;
+                }
+                
+            }
+
+            .info {
+                
+                .card-body{
+
+                    .card-title, .card-text, .menu-btn {
+
+                        font-size: 2.2vw;
+
+                    }
+
+                }
+
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 600px) and (min-width: 420px) {
+    article.card{
+               
+
+        .article {
+
+            .img {                        
+    
+                img {             
+                    width: 85%;
+                }
+                
+            }
+
+            .info {
+                
+                .card-body{
+
+                    .card-title, .card-text, .menu-btn {
+
+                        font-size: 4vw;
+
+                    }
+
+                }
+
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 420px) {
+    article.card {
+        width: 100%;
+        height: 24vh;
+        
+        .article {
+
+            .img {                        
+    
+                img {             
+                    width: 100%;
+                }
+                
+            }
+
+            .info {
+                
+                .card-body{
+
+                    .card-title, .card-text {
+                        font-size: 4vw;
+
+                    }                                       
+                    
+                    .menu-btn {
+
+                        font-size: 2.9vw;
+
+                    }
+
+                }
+
+            }
+
+        }
+    }
+}

@@ -7,11 +7,15 @@ export const useAppDispatch : () => AppDispatch = useDispatch;
 
 export const useAppSelector : TypedUseSelectorHook<RootState> = useSelector;
 
-export const usePagesReducer = (productList: Product[]) => {
+export const usePagesReducer = (productList: Product[], size: number) => {
+
+    const end = size > 450 ? 3 : 2;
+
+    const productQuantity = end + 1;
 
     const initialState : IState = {
         start: 0,
-        end: 3,
+        end: end,
         currentPage: 1,
         totalPages: 0
     }
@@ -23,15 +27,15 @@ export const usePagesReducer = (productList: Product[]) => {
                 return {
                     ...state,
                     start: state.end + 1,
-                    end: state.end + 4,
+                    end: state.end + productQuantity,
                     currentPage: state.currentPage + 1                
                 };
     
             case EActionType.PREV:
                 return {
                     ...state,
-                    end: state.end - 4,
-                    start: state.start - 4,
+                    end: state.end - productQuantity,
+                    start: state.start - productQuantity,
                     currentPage: state.currentPage - 1
                 };
             case EActionType.SET_TOTAL:
@@ -43,7 +47,7 @@ export const usePagesReducer = (productList: Product[]) => {
             case EActionType.RESET: 
               return{
                 start: 0,
-                end: 3,
+                end: end,
                 currentPage: 1,
                 totalPages: 0
               }
@@ -60,7 +64,7 @@ export const usePagesReducer = (productList: Product[]) => {
 
         dispatch({type: EActionType.RESET,payload:0})
 
-        const totalPages = Math.round(productList.length / 4);
+        const totalPages = Math.round(productList.length / (end + 1));
 
         dispatch({type: EActionType.SET_TOTAL, payload: totalPages})
   

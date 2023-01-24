@@ -2,7 +2,7 @@ import './SingleProductPage.scss';
 import { useParams } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { Product } from '../../models/models'
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { SharedLayoutContext } from '../SharedLayout/SharedLayout';
 import { addToCart } from '../../features/usersSlice';
 
@@ -48,10 +48,18 @@ export const SingleProductPage = () => {
 
     }
 
+    const [width, setWIdth] = useState(0);
+
+    useEffect(()=>{
+      setWIdth(window.innerWidth);
+    },[])
+
+    const isMobile = width < 450;
+
   return (
     <section className='container card mt-5' style={{borderColor:'purple'}}>
         <div className="product-div d-flex row">          
-            <div className="image col-4 mt-5">
+            <div className={`image col-${isMobile ? '12' : '4'} mt-5`}>
                 <img src={image} alt="" />
             </div>
             <div className="info-div d-flex flex-column col m-5 justify-content-evenly">

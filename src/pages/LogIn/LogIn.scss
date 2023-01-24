@@ -45,3 +45,13 @@ $main-color: purple;
     }    
 
 }
+
+@media screen and (max-width: 450px) {
+    .container.form-div {
+        width: 100%;
+
+        .signup-text {
+            font-size: 4.5vw;
+        }
+    }
+}

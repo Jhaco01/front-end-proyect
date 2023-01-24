@@ -2,14 +2,21 @@ import './ProductPage.scss'
 import { MenuProductItem } from '../../components/MenuProductItem/MenuProductItem';
 import { usePagesReducer } from '../../hooks';
 import { Product } from '../../models/models'
+import { useEffect, useState } from 'react';
 
 interface Props {
     productList: Product[];
 }
 
 export const ProductPage : React.FC<Props> = ({productList}) => {    
-    
-    const {state,next,prev} = usePagesReducer(productList);
+
+    const [width, setWidth] = useState(0);
+
+    useEffect(()=>{
+      setWidth(window.innerWidth);
+    },[])
+        
+    const {state,next,prev} = usePagesReducer(productList,width);
     
     const sliceProductList = productList.slice( state.start, state.end + 1 );    
 
@@ -32,7 +39,7 @@ export const ProductPage : React.FC<Props> = ({productList}) => {
                 }
             </div>
         </section>
-        <div className="buttons">
+        <div className="buttons mt-3">
 
         {
 

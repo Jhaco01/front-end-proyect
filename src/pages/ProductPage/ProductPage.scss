@@ -6,7 +6,7 @@ main {
     .section {
 
         width: 55%;
-        margin: auto;
+        margin: auto;        
 
     }
 
@@ -26,6 +26,46 @@ main {
 
         }
 
+
+    }
+}
+
+@media screen and (max-width: 910px) and (min-width: 601px) {
+    main {
+        
+        .section {
+
+            width: 80%;
+
+        }
+
+    }
+}
+
+@media screen and (max-width: 600px) and (min-width: 420px) {
+    main {
+        
+        .section {
+
+            width: 100%;
+
+        }
+
+    }
+}
+
+@media screen and (max-width: 420px) {
+    main {
+        
+        .section {
+
+            width: 95%;
+
+        }
+
+        .buttons {
+            margin-left: 20%;
+        }
 
     }
 }

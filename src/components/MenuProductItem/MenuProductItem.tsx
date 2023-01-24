@@ -34,8 +34,8 @@ export const MenuProductItem : React.FC<Product> = (Props) => {
                   <div className="card-body">
                       <h5 className="card-title"> {title} </h5>
                       <p className="card-text text-end h5">{price}$</p>
-                      <Link to={`/products/${id}`} className='btn btn-lg ms-3' > Details </Link>                      
-                      <button className='btn btn-lg ms-3' onClick={handleAddClick}> Add to cart </button>
+                      <Link to={`/products/${id}`} className='btn btn-lg menu-btn ms-3' > Details </Link>                      
+                      <button className='btn btn-lg menu-btn ms-3' onClick={handleAddClick}> Add to cart </button>
                   </div>
               </div>
           </div>

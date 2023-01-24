@@ -17,3 +17,9 @@ $main-color: purple;
     }
 
 }
+
+@media screen and (max-width: 450px) {
+    .card.result-message {
+        margin-left: 0%;
+    }
+}
